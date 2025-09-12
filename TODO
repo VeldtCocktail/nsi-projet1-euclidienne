@@ -1,0 +1,3 @@
+Marius:
+fonction gen_points:
+prend en entree un nombre de points a generer. Genere ce nombre de points avec des coordonnnees (en 2d) aleatoires.
