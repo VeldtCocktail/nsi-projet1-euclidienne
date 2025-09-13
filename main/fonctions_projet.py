@@ -1,26 +1,7 @@
 import random as rd
 import util
 
-def gen_points(points, max_x, max_y, classes):
-    """
-    Entrees: points:int : nombre de points a generer
-             max_x:float : l'abscisse maximum que peut avoir un point (inclue)
-             max_y:float : l'ordonnee maximum que peut avoir un point (inclue)
-             classes:tuple[str] : la/les classes possibles des points a generer
-    Role: genere points points, aux coordonnees en 2 dimensions, tout en leur
-          affectant une classe de facon aleatoire parmi celles proposees dans classe
-    Sortie: liste_finale:list[tuple[tuple[float, float]]] : la liste des 
-            coordonnees de tous les points generes et de leurs noms
-    """
-    liste_finale = [] # On genere une liste vide 
-    for i in range(points): # On execute points fois la boucle
-        valeur = (rd.uniform(0, max_x), rd.uniform(0, max_y)) # On 
-        # genere aleatoirement les coordonnees que l'on place dans le tuple
-        #valeur
-        liste_finale.append((valeur, "x" + str(i + 1), classes[rd.randint(0, 1)]
-                             )) # On ajoute valeur a la fin de la liste
-    return liste_finale # On renvoie la liste finale
-
+# Toutes ces fonctions servent au programme principal.
 def k_pp_voisins(liste_coord_points, nb_voisins, pos_x):
     """
     Entrees: liste_points:list[str] : liste des points et leurs 
@@ -80,3 +61,24 @@ def predire_classe(liste_voisins):
     else:
         classe_point = "T"
     return classe_point
+
+# Ces fonctions servent aux questions facultatives.
+def gen_points(points, max_x, max_y, classes):
+    """
+    Entrees: points:int : nombre de points a generer
+             max_x:float : l'abscisse maximum que peut avoir un point (inclue)
+             max_y:float : l'ordonnee maximum que peut avoir un point (inclue)
+             classes:tuple[str] : la/les classes possibles des points a generer
+    Role: genere points points, aux coordonnees en 2 dimensions, tout en leur
+          affectant une classe de facon aleatoire parmi celles proposees dans classe
+    Sortie: liste_finale:list[tuple[tuple[float, float]]] : la liste des 
+            coordonnees de tous les points generes et de leurs noms
+    """
+    liste_finale = [] # On genere une liste vide 
+    for i in range(points): # On execute points fois la boucle
+        valeur = (rd.uniform(0, max_x), rd.uniform(0, max_y)) # On 
+        # genere aleatoirement les coordonnees que l'on place dans le tuple
+        #valeur
+        liste_finale.append((valeur, "x" + str(i + 1), classes[rd.randint(0, 1)]
+                             )) # On ajoute valeur a la fin de la liste
+    return liste_finale # On renvoie la liste finale
