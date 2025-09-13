@@ -1,5 +1,4 @@
 import math
-import random as rd
 
 def distance(coord_1, coord_2):
     """
@@ -28,7 +27,8 @@ def tri_croissant(liste):
     """
     Entree: liste:list : liste d'elements a valeur mathematique
     Sortie: idem
-    Role: trie par ordre croissant, si ce n'etait pas deja assez evident
+    Role: trie par ordre croissant, si ce n'etait pas deja assez evident. Par
+          insertion, si cela vous interesse.
     """
     for i in range(1, len(liste)):
         element = liste[i]
@@ -54,58 +54,17 @@ def trouver_indices(element, liste):
                                    #correspondance
     return indices
 
-def gen_points(points, max_x, max_y, classes):
+def compter_element(liste, element):
     """
-    Entrees:
-    Role:
-    Sortie: liste_finale:list[tuple[tuple[float, float]]] : la liste des c
-    oordonnees de tous les points generes et de leurs noms
+    Entrees: liste:list : une liste d'elements quelconques
+             element:any : l'element dont on cherche le nombre d'iterations dans
+             liste
+    Role: compte er renvoie le nombre de fois que element apparait dans liste
+    Sortie: apparitions:int : le nombre d'apparitions de element dans list
     """
-    liste_finale = [] # On genere une liste vide 
-    for i in range(points): # On execute points fois la boucle
-        valeur = (rd.uniform(0, max_x), rd.uniform(0, max_y)) # On 
-        # genere aleatoirement les coordonnees que l'on place dans le tuple
-        #valeur
-        liste_finale.append((valeur, "x" + str(i + 1), classes[rd.randint(0, 1)]
-                             )) # On ajoute valeur a la fin de la liste
-    return liste_finale # On renvoie la liste finale
-
-def k_pp_voisins(liste_coord_points, nb_voisins, pos_x):
-    """
-    Entrees: liste_points:list[str] : liste des points et leurs 
-             coordonnees (en float)
-             nb_voisins:int : le nombre de voisins a trouver
-             pos_x:tuple[float] : position en 2D du point
-             liste_coord_points:list[]
-    Role: trouve les nb_voisins plus proches voisins du point de coordonnees   
-          pos_x dans la liste de points liste_points
-    Sortie: voisins:list[tuple[float]]
-    Note: renvoie voisins sous la forme :
-    """
-    voisins = [] # Liste des nb_voisins plus proches voisins
-    distance_point = [] # Liste avec la distance de tous les points dans 
-                        #liste_coord_points
-    
-    for element in liste_coord_points:
-        distance_point.append(distance(pos_x, element[0])) # Ajout de chaque 
-                                                      #distance a distance_point
-
-    tri_croissant(distance_point)
-    for i in range(nb_voisins):
-        voisins.append((liste_coord_points[i], 
-                        distance_point[i])) # On ajoute a voisins le point selon
-                                        #le format : ['nom', (x1, x2), distance]
-    return voisins
-
-def calc_nb_voisins_ideal(liste_points):
-    """
-    Entree: liste_points:list[any] : liste des points dont on cherche les 
-    voisins
-    Role: calcule le nombre ideal de voisins a rechercher
-    Sortie: nb_voisins:int le nombre ideal de voisins a rechercher
-    """
-    if len(liste_points) % 2 == 0:
-        nb_voisins = len(liste_points) - 1
-    else:
-        nb_voisins = len(liste_points)
-    return nb_voisins
+    apparitions = 0
+    for item in liste: # On parcourt toute la liste, et increment le compteur
+                       #si element apparait
+        if item == element:
+            apparitions += 1
+    return apparitions
