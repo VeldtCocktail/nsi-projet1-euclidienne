@@ -54,7 +54,7 @@ def trouver_indices(element, liste):
                                    #correspondance
     return indices
 
-def gen_points(points, max_x, max_y):
+def gen_points(points, max_x, max_y, classes):
     """
     Entrees:
     Role:
@@ -66,7 +66,8 @@ def gen_points(points, max_x, max_y):
         valeur = (rd.uniform(0, max_x), rd.uniform(0, max_y)) # On 
         # genere aleatoirement les coordonnees que l'on place dans le tuple
         #valeur
-        liste_finale.append((valeur, "x" + str(i + 1))) # On ajoute valeur a la fin de la liste
+        liste_finale.append((valeur, "x" + str(i + 1), classes[rd.randint(0, 1)]
+                             )) # On ajoute valeur a la fin de la liste
     return liste_finale # On renvoie la liste finale
 
 def k_pp_voisins(liste_coord_points, nb_voisins, pos_x):
