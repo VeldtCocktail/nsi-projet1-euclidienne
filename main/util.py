@@ -58,18 +58,18 @@ def gen_points(points, max_x, max_y):
     """
     Entrees:
     Role:
-    Sortie: liste_finale:list[tuple[float, float]] : la liste des coordonnees de
-    tous les points generes
+    Sortie: liste_finale:list[tuple[tuple[float, float]]] : la liste des c
+    oordonnees de tous les points generes et de leurs noms
     """
     liste_finale = [] # On genere une liste vide 
     for i in range(points): # On execute points fois la boucle
         valeur = (rd.uniform(0, max_x), rd.uniform(0, max_y)) # On 
         # genere aleatoirement les coordonnees que l'on place dans le tuple
         #valeur
-        liste_finale.append(valeur) # On ajoute valeur a la fin de la liste
+        liste_finale.append((valeur, "x" + str(i + 1))) # On ajoute valeur a la fin de la liste
     return liste_finale # On renvoie la liste finale
 
-def k_pp_voisins(liste_points, liste_coord_points, nb_voisins, pos_x):
+def k_pp_voisins(liste_coord_points, nb_voisins, pos_x):
     """
     Entrees: liste_points:list[str] : liste des points et leurs 
              coordonnees (en float)
@@ -79,19 +79,20 @@ def k_pp_voisins(liste_points, liste_coord_points, nb_voisins, pos_x):
     Role: trouve les nb_voisins plus proches voisins du point de coordonnees   
           pos_x dans la liste de points liste_points
     Sortie: voisins:list[tuple[float]]
+    Note: renvoie voisins sous la forme :
     """
     voisins = [] # Liste des nb_voisins plus proches voisins
     distance_point = [] # Liste avec la distance de tous les points dans 
                         #liste_coord_points
     
     for element in liste_coord_points:
-        distance_point.append(distance(pos_x, element)) # Ajout de chaque 
+        distance_point.append(distance(pos_x, element[0])) # Ajout de chaque 
                                                       #distance a distance_point
 
     tri_croissant(distance_point)
     for i in range(nb_voisins):
-        voisins.append(liste_coord_points[i], 
-                        distance_point[i]) # On ajoute a voisins le point selon
+        voisins.append((liste_coord_points[i], 
+                        distance_point[i])) # On ajoute a voisins le point selon
                                         #le format : ['nom', (x1, x2), distance]
     return voisins
 
