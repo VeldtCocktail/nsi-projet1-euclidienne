@@ -14,5 +14,5 @@ voisins = fp.k_pp_voisins(liste_points,
 
 print("La classe du point de coordonnees (" + str(abscisse_point) + ', ' 
       + str(ordonnee_point) + 
-      ") sera, selon lalgorithme des plus proches voisins : "
+      ") sera, selon l'algorithme des plus proches voisins : "
         + fp.predire_classe(voisins))
