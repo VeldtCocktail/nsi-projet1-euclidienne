@@ -64,7 +64,7 @@ def predire_classe(liste_voisins):
         classe_point = "T"
     return classe_point
 
-# Ces fonctions servent aux questions facultatives.
+# fonction servant aux questions facultatives.
 def gen_points(points, max_x, max_y, classes):
     """
     Entrees: points:int : nombre de points a generer
