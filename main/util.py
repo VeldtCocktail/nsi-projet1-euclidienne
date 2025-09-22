@@ -8,8 +8,8 @@ def distance(coord_1, coord_2):
     Sortie: distance:float
     """
     distance = math.sqrt(
-               abs(((coord_2[0] - coord_1[0])**2) + ((coord_2[1] - coord_1[1])**2))
-               )
+               abs(((coord_2[0] - coord_1[0])**2) + (
+                   (coord_2[1] - coord_1[1])**2)))
     return distance
 
 def permuter(tableau, indice_1, indice_2):
@@ -28,7 +28,7 @@ def tri_croissant(liste):
     Entree: liste:list : liste d'elements a valeur mathematique
     Sortie: idem
     Role: trie par ordre croissant, si ce n'etait pas deja assez evident. Par
-          insertion, si cela vous interesse.
+          insertion, apparement ca peut etre utile de preciser.
     """
     for i in range(1, len(liste)):
         element = liste[i]
@@ -57,8 +57,8 @@ def trouver_indices(element, liste):
 def compter_element(liste, element):
     """
     Entrees: liste:list : une liste d'elements quelconques
-             element:any : l'element dont on cherche le nombre d'iterations dans
-             liste
+             element:any : l'element dont on cherche le nombre d'iterations 
+             dans liste
     Role: compte er renvoie le nombre de fois que element apparait dans liste
     Sortie: apparitions:int : le nombre d'apparitions de element dans list
     """

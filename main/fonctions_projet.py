@@ -19,14 +19,16 @@ def k_pp_voisins(liste_coord_points, nb_voisins, pos_x):
                         #liste_coord_points
     
     for element in liste_coord_points:
-        distance_point.append(util.distance(pos_x, element[0])) # Ajout de chaque 
-                                                      #distance a distance_point
+        distance_point.append(util.distance(pos_x, element[0])) # Ajout de 
+                                                      #chaque distance a 
+                                                      #distance_point
 
     util.tri_croissant(distance_point)
     for i in range(nb_voisins):
         voisins.append((liste_coord_points[i], 
-                        distance_point[i])) # On ajoute a voisins le point selon
-                                        #le format : ['nom', (x1, x2), distance]
+                        distance_point[i])) # On ajoute a voisins le point 
+                                            #selon le format :
+                                            #['nom', (x1, x2), distance]
     return voisins
 
 def calc_nb_voisins_ideal(liste_points):
@@ -45,8 +47,8 @@ def calc_nb_voisins_ideal(liste_points):
 def predire_classe(liste_voisins):
     """
     Entree: liste_voisins:list[tuple[tuple[tuple[float], str, str], float]] :
-            liste des voisins du point dont on cherche a predire la classe. Elle 
-            contient la position de ces voisins, le nom, leur classe et la 
+            liste des voisins du point dont on cherche a predire la classe. 
+            Elle contient la position de ces voisins, le nom, leur classe et la 
             distance avec le point dont on cherche a predire la classe.
     Role: predit la classe du point dont on a pas la classe
     Sortie: classe_point:str : la classe predite du point : "C" ou "T"
@@ -70,7 +72,8 @@ def gen_points(points, max_x, max_y, classes):
              max_y:float : l'ordonnee maximum que peut avoir un point (inclue)
              classes:tuple[str] : la/les classes possibles des points a generer
     Role: genere points points, aux coordonnees en 2 dimensions, tout en leur
-          affectant une classe de facon aleatoire parmi celles proposees dans classe
+          affectant une classe de facon aleatoire parmi celles proposees dans 
+          classe
     Sortie: liste_finale:list[tuple[tuple[float, float]]] : la liste des 
             coordonnees de tous les points generes et de leurs noms
     """
@@ -79,6 +82,7 @@ def gen_points(points, max_x, max_y, classes):
         valeur = (rd.uniform(0, max_x), rd.uniform(0, max_y)) # On 
         # genere aleatoirement les coordonnees que l'on place dans le tuple
         #valeur
-        liste_finale.append((valeur, "x" + str(i + 1), classes[rd.randint(0, 1)]
+        liste_finale.append((valeur, "x" + str(i + 1), classes[rd.randint(0, 1)
+                                                               ]
                              )) # On ajoute valeur a la fin de la liste
     return liste_finale # On renvoie la liste finale
